@@ -19,7 +19,7 @@ namespace Infrastructure.Data
 
                     foreach (var item in brands)
                     {
-                        context.ProductBrands.Add(item);
+                        context.ProductBrands!.Add(item);
                     }
                     await context.SaveChangesAsync();
                 }
@@ -33,7 +33,7 @@ namespace Infrastructure.Data
 
                     foreach (var item in types)
                     {
-                        context.ProductTypes.Add(item);
+                        context.ProductTypes!.Add(item);
                     }
                     await context.SaveChangesAsync();
                 }

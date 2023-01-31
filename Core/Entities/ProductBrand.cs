@@ -3,6 +3,6 @@ namespace Core.Entities
     
     public class ProductBrand : BaseEntity
     {
-        public string? Name { get; set; }
+        public required string Name { get; set; }
     }
 }

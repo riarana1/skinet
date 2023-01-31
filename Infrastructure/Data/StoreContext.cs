@@ -14,8 +14,7 @@ namespace Infrastructure.Data
         public StoreContext(DbContextOptions<StoreContext> options) : base(options) {}
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            
-            var configuration = new ConfigurationBuilder()
+             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
                 .Build();
@@ -26,8 +25,8 @@ namespace Infrastructure.Data
 
         //Create the DataSet for the Employee         
         public DbSet<Product> Products => Set<Product>();
-        public DbSet<ProductBrand>? ProductBrands { get; set; }
-        public DbSet<ProductType>? ProductTypes { get; set; }
+        public DbSet<ProductBrand> ProductBrands { get; set; }
+        public DbSet<ProductType> ProductTypes { get; set; } 
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

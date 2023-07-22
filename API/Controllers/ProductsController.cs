@@ -27,7 +27,7 @@ namespace API.Controllers
             _mapper = mapper;
         }
 
-        // GET: api/Products
+        // GET: api/products
         [HttpGet]
         public async Task<ActionResult<Pagination<ProductDto>>> GetProductsAsync(
             [FromQuery]ProductSpecParams productParams)

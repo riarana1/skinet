@@ -16,10 +16,10 @@ namespace API.Errors
         {
             return statusCode switch
             {
-                400 => "A bad request, you have made",
-                401 => "Authorized, you are not",
-                404 => "Resource found, it was not",
-                500 => "Errors are the path to the dark side. Errors lead to anger. Anger leads to hate.  Hate leads to career change.",
+                400 => "Bad Request",
+                401 => "Unauthorized",
+                404 => "Not Found",
+                500 => "Internal Server Error",
                 _ => null
             };
         }

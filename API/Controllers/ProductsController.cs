@@ -29,7 +29,7 @@ namespace API.Controllers
 
         // GET: api/products
         [HttpGet]
-        public async Task<ActionResult<Pagination<ProductDto>>> GetProductsAsync(
+        public async Task<ActionResult<Pagination<ProductToReturnDto>>> GetProductsAsync(
             [FromQuery]ProductSpecParams productParams)
         {
             var spec = new ProductsWithTypesAndBrandsSpecification(productParams);
@@ -40,9 +40,9 @@ namespace API.Controllers
 
             var products = await _productsRepo.ListAsync(spec);
 
-            var data = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductDto>>(products);
+            var data = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductToReturnDto>>(products);
 
-            return Ok(new Pagination<ProductDto>(productParams.PageIndex, productParams.PageSize,
+            return Ok(new Pagination<ProductToReturnDto>(productParams.PageIndex, productParams.PageSize,
                         totalItems, data));
         }
 
@@ -50,7 +50,7 @@ namespace API.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<ProductDto>> GetProductAsync(int id)
+        public async Task<ActionResult<ProductToReturnDto>> GetProductAsync(int id)
         {
             var spec = new ProductsWithTypesAndBrandsSpecification(id);
             var product = await _productsRepo.GetEntityWithSpec(spec);
@@ -60,7 +60,7 @@ namespace API.Controllers
                 return NotFound(new ApiResponse(400));
             }
 
-            return _mapper.Map<Product, ProductDto>(product);
+            return _mapper.Map<Product, ProductToReturnDto>(product);
         }
 
         // GET: api/Product/brands

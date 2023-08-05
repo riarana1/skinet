@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace API.Dtos
 {
-    public class BasketItemDTO
+    public class BasketItemDto
     {
         [Required]
         public int Id { get; set; }
